@@ -1,0 +1,26 @@
+PODS:
+  - Bolts/Tasks (1.9.0)
+  - lottie-ios (3.1.6)
+  - Parse (1.17.3):
+    - Parse/Core (= 1.17.3)
+  - Parse/Core (1.17.3):
+    - Bolts/Tasks (~> 1.9)
+
+DEPENDENCIES:
+  - lottie-ios
+  - Parse
+
+SPEC REPOS:
+  trunk:
+    - Bolts
+    - lottie-ios
+    - Parse
+
+SPEC CHECKSUMS:
+  Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
+  lottie-ios: 85ce835dd8c53e02509f20729fc7d6a4e6645a0a
+  Parse: c1ad2a04d2cab2b54b6fb7da05f741abf2cf57d1
+
+PODFILE CHECKSUM: cceced81526c13d961f19f18510539fa7135e5a8
+
+COCOAPODS: 1.9.1
