@@ -103,23 +103,15 @@ struct FindUserView: View {
     }
     
     func fetchUser(with email: String) {
-        print(">>>>>FETCH USER IN BACKGROUND")
         userService.getUser(with: email) { (result) in
-            print(">>>>>SHOW WELCOM VIEW OR ERROR")
-            DispatchQueue.main.async {
-                self.setPropertyInitialState()
-                
-                switch result {
-                case .success(_):
-                    self.showWelcomeView = true
-                    break
-                case .failure:
-                    self.showingAlert = true
-                    break
-                }
-                
+            switch result {
+            case .success(_):
+                self.showWelcomeView = true
+                break
+            case .failure:
+                self.showingAlert = true
+                break
             }
-            
         }
     }
     
