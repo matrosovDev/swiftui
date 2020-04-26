@@ -30,7 +30,6 @@ class UserService: ObservableObject {
                     completion(.failure)
                     return
                 }
-                print(Thread.current.threadName)
                 self.user = User(pfUser: firstFoundUser)
                 
                 self.user.avatar?.getDataInBackground(block: { (data, error) in
@@ -47,18 +46,4 @@ class UserService: ObservableObject {
     }
     
     
-}
-
-extension Thread {
-    
-    var threadName: String {
-        if let currentOperationQueue = OperationQueue.current?.name {
-            return "OperationQueue: \(currentOperationQueue)"
-        } else if let underlyingDispatchQueue = OperationQueue.current?.underlyingQueue?.label {
-            return "DispatchQueue: \(underlyingDispatchQueue)"
-        } else {
-            let name = __dispatch_queue_get_label(nil)
-            return String(cString: name, encoding: .utf8) ?? Thread.current.description
-        }
-    }
 }

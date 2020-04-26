@@ -106,6 +106,8 @@ struct FindUserView: View {
         userService.getUser(with: email) { (result) in
             switch result {
             case .success(_):
+                self.showActivityIndicator = false
+                self.showingAlert = false
                 self.showWelcomeView = true
                 break
             case .failure:
@@ -114,13 +116,6 @@ struct FindUserView: View {
             }
         }
     }
-    
-    func setPropertyInitialState() {
-        showWelcomeView = false
-        showActivityIndicator = false
-        showingAlert = false
-    }
-    
 }
 
 struct FindUserView_Previews: PreviewProvider {
