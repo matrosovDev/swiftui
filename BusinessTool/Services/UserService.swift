@@ -18,62 +18,47 @@ class UserService: ObservableObject {
     
     typealias UserServiceResponse = (User?, NSError?) -> Void
     
-    @Published var user = User(username: "Test", email: "test@test.com", avatar: nil, image: nil)
-    
-    func createUser() {
-        let user = PFUser()
-        user.username = ""
-        user.password = ""
-        user.email = ""
-        
-        user.signUpInBackground { (succeeded, error) in
-            if let error = error {
-                print(error)
-            } else {
-                print("Hooray! Let them use the app now.")
-            }
-        }
-    }
+    @Published var user = User(username: "Test", email: "test@test.com", avatar: nil)
     
     func getUser(with email: String, completion: @escaping (UserFetchResult) -> Void) {
-        
         let findUsers:PFQuery = PFUser.query()!
         findUsers.whereKey("email",  equalTo: email)
         findUsers.findObjectsInBackground { (objects, error) in
             if error == nil {
                 guard let firstFoundUser = objects?.first as? PFUser else {
                     print("Get users error")
-                    print(">>>>>COMPLETION FAILURE")
                     completion(.failure)
                     return
                 }
-                
+                print(Thread.current.threadName)
                 self.user = User(pfUser: firstFoundUser)
                 
                 self.user.avatar?.getDataInBackground(block: { (data, error) in
-                    
                     if error == nil {
-                        if let unwrappedData = data {
-                            if let unwrappedUIImage = UIImage(data: unwrappedData) {
-                                self.user.image = Image(uiImage: unwrappedUIImage)
-                            }
-                        }
+                        self.user.image = Image(data: data, placeholder: "ManPlaceholderAvatar")
                     }
-                    
-                    if self.user.image == nil {
-                        self.user.image = Image("ManPlaceholderAvatar")
-                    }
-                    print(">>>>>COMPLETION SUCCESS")
                     completion(.success(data: self.user))
                 })
-                
             } else {
                 print("Get users error")
-                print(">>>>>COMPLETION FAILURE")
                 completion(.failure)
             }
         }
     }
     
     
+}
+
+extension Thread {
+    
+    var threadName: String {
+        if let currentOperationQueue = OperationQueue.current?.name {
+            return "OperationQueue: \(currentOperationQueue)"
+        } else if let underlyingDispatchQueue = OperationQueue.current?.underlyingQueue?.label {
+            return "DispatchQueue: \(underlyingDispatchQueue)"
+        } else {
+            let name = __dispatch_queue_get_label(nil)
+            return String(cString: name, encoding: .utf8) ?? Thread.current.description
+        }
+    }
 }

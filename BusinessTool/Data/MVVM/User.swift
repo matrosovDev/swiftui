@@ -13,7 +13,7 @@ struct User {
     let username: String
     let email: String
     let avatar: PFFileObject?
-    var image: Image?
+    var image: Image = Image("ManPlaceholderAvatar")
 }
 
 extension User {
@@ -21,6 +21,5 @@ extension User {
         username = pfUser.username ?? "no value"
         email = pfUser.email ?? "no value"
         avatar = pfUser.value(forKey: "avatar") as? PFFileObject
-        image = nil
     }
 }

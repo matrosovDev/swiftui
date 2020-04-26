@@ -35,7 +35,7 @@ struct WelcomeView: View {
                 VStack {
                     Image("MountainWelcomBackground").resizable().frame(height: 300).edgesIgnoringSafeArea(.top)
                     
-                    CircleImage(image: userService.user.image!)
+                    CircleImage(image: userService.user.image)
                         .offset(y: -220)
                         .frame(height: 140)
                         .frame(width: 140)
@@ -114,7 +114,7 @@ struct WelcomeView: View {
 struct WelcomeView_Previews: PreviewProvider {
     static var previews: some View {
         let userService = UserService()
-        userService.user = User(username: "Alex Matrosov", email: "test.developer@gmail.com", avatar: nil, image: Image("ManPlaceholderAvatar"))
+        userService.user = User(username: "Alex Matrosov", email: "test.developer@gmail.com", avatar: nil)
         
         return NavigationView { WelcomeView().environmentObject(userService)
         }
