@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct LoginView: View {
+struct FindUserView: View {
     
     @State private var email = "negan@gmail.com"
     @State var showWelcomeView = false
@@ -131,8 +131,8 @@ struct LoginView: View {
     
 }
 
-struct LoginView_Previews: PreviewProvider {
+struct FindUserView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView()
+        FindUserView()
     }
 }

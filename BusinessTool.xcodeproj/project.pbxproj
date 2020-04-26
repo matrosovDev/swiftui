@@ -14,7 +14,7 @@
 		FA651C0424465456000166ED /* ApplicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA651C0324465456000166ED /* ApplicationManager.swift */; };
 		FA651C06244654D8000166ED /* ThirdPartyConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA651C05244654D8000166ED /* ThirdPartyConfig.swift */; };
 		FA651C082446574F000166ED /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA651C072446574F000166ED /* UserService.swift */; };
-		FAA788BA2447471E000D9150 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA788B92447471E000D9150 /* LoginView.swift */; };
+		FAA788BA2447471E000D9150 /* FindUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA788B92447471E000D9150 /* FindUserView.swift */; };
 		FAA788BD24475A04000D9150 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA788BC24475A04000D9150 /* Color+Extension.swift */; };
 		FAA788C024475EC4000D9150 /* KeyboardModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA788BF24475EC4000D9150 /* KeyboardModifier.swift */; };
 		FAA788C3244789D0000D9150 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA788C2244789D0000D9150 /* WelcomeView.swift */; };
@@ -63,7 +63,7 @@
 		FA651C0324465456000166ED /* ApplicationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationManager.swift; sourceTree = "<group>"; };
 		FA651C05244654D8000166ED /* ThirdPartyConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPartyConfig.swift; sourceTree = "<group>"; };
 		FA651C072446574F000166ED /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
-		FAA788B92447471E000D9150 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		FAA788B92447471E000D9150 /* FindUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindUserView.swift; sourceTree = "<group>"; };
 		FAA788BC24475A04000D9150 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		FAA788BF24475EC4000D9150 /* KeyboardModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardModifier.swift; sourceTree = "<group>"; };
 		FAA788C2244789D0000D9150 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
@@ -160,7 +160,7 @@
 			children = (
 				FA1D0DFB245235A100F10BF4 /* Misk Views */,
 				FAA788C12447899E000D9150 /* Welcome */,
-				FAA788B824474696000D9150 /* Login */,
+				FAA788B824474696000D9150 /* FindUser */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -181,12 +181,12 @@
 			path = MVVM;
 			sourceTree = "<group>";
 		};
-		FAA788B824474696000D9150 /* Login */ = {
+		FAA788B824474696000D9150 /* FindUser */ = {
 			isa = PBXGroup;
 			children = (
-				FAA788B92447471E000D9150 /* LoginView.swift */,
+				FAA788B92447471E000D9150 /* FindUserView.swift */,
 			);
-			path = Login;
+			path = FindUser;
 			sourceTree = "<group>";
 		};
 		FAA788BB244759E5000D9150 /* Extension */ = {
@@ -568,7 +568,7 @@
 				FAA9B79C24561EEF00BB04D5 /* Image+Extension.swift in Sources */,
 				FAA788C3244789D0000D9150 /* WelcomeView.swift in Sources */,
 				FA1D0DFA2452327100F10BF4 /* LottieView.swift in Sources */,
-				FAA788BA2447471E000D9150 /* LoginView.swift in Sources */,
+				FAA788BA2447471E000D9150 /* FindUserView.swift in Sources */,
 				FA651C082446574F000166ED /* UserService.swift in Sources */,
 				FA651C06244654D8000166ED /* ThirdPartyConfig.swift in Sources */,
 				FA651C0424465456000166ED /* ApplicationManager.swift in Sources */,
