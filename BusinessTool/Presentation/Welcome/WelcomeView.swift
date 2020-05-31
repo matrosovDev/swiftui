@@ -11,8 +11,6 @@ import SwiftUI
 struct WelcomeView: View {
     
     @State private var password = ""
-    @State var showWelcomeView = false
-    @State var showActivityIndicator = false
     
     @EnvironmentObject var userService: UserService
     
@@ -20,98 +18,85 @@ struct WelcomeView: View {
         
         ZStack {
             Color.customLightGray
-            if self.showActivityIndicator {
-                VStack {
-                    HStack {
-                        Spacer()
-                        LottieView(named: "19451-blue-preloader",
-                                   loop: self.showActivityIndicator,
-                                   size: 200
-                        )
-                        Spacer()
-                    }
-                }
-            } else {
+            
+            ScrollView {
                 
-                ScrollView {
+                VStack {
+                    Image("MountainWelcomBackground").resizable().frame(height: 300)
                     
-                    VStack {
-                        Image("MountainWelcomBackground").resizable().frame(height: 300)
-                        
-                        CircleImage(image: userService.user.image)
-                            .padding(.top, -150)
-                            .frame(height: 140)
-                            .frame(width: 140)
-                        
-                        VStack(alignment: .leading) {
-                            HStack(alignment: .top) {
-                                Spacer()
-                                Text(userService.user.username)
-                                    .font(.headline)
-                                Spacer()
-                            }
-                        }
-                        .padding(.top, -70)
-                        
-                        VStack (alignment: .leading, spacing: 10) {
-                            
-                            Text("Password:")
+                    CircleImage(image: userService.user.image)
+                        .padding(.top, -150)
+                        .frame(height: 140)
+                        .frame(width: 140)
+                    
+                    VStack(alignment: .leading) {
+                        HStack(alignment: .top) {
+                            Spacer()
+                            Text(userService.user.username)
                                 .font(.headline)
-                            
-                            TextField("Enter your password", text: $password)
-                                .padding(.all)
-                                .font(Font.system(size: 18, weight: .medium, design: .rounded))
-                                .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.customCorporateBlue, lineWidth: 1))
-                                .foregroundColor(Color.customCorporateBlue)
-                                .keyboardType(.emailAddress)
-                                .autocapitalization(.none)
-                            
+                            Spacer()
+                        }
+                    }
+                    .padding(.top, -70)
+                    
+                    VStack (alignment: .leading, spacing: 10) {
+                        
+                        Text("Password:")
+                            .font(.headline)
+                        
+                        TextField("Enter your password", text: $password)
+                            .padding(.all)
+                            .font(Font.system(size: 18, weight: .medium, design: .rounded))
+                            .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.customCorporateBlue, lineWidth: 1))
+                            .foregroundColor(Color.customCorporateBlue)
+                            .keyboardType(.emailAddress)
+                            .autocapitalization(.none)
+                        
+                        Button(action: {
+                        }) {
+                            Text("Forgot password?")
+                                .fontWeight(.bold)
+                                .font(.headline)
+                                .padding(EdgeInsets(top: 20, leading: 10, bottom: 20, trailing: 0))
+                                .foregroundColor(.customCorporateBlue)
+                        }
+                        
+                        HStack {
                             Button(action: {
                             }) {
-                                Text("Forgot password?")
+                                Text("Create account")
                                     .fontWeight(.bold)
-                                    .font(.headline)
-                                    .padding(EdgeInsets(top: 20, leading: 10, bottom: 20, trailing: 0))
+                                    .font(.subheadline)
+                                    .padding()
                                     .foregroundColor(.customCorporateBlue)
                             }
                             
-                            HStack {
-                                Button(action: {
-                                }) {
-                                    Text("Create account")
-                                        .fontWeight(.bold)
-                                        .font(.subheadline)
-                                        .padding()
-                                        .foregroundColor(.customCorporateBlue)
-                                }
-                                
-                                Spacer()
-                                
-                                Button(action: {
-                                    //self.showActivityIndicator.toggle()
-                                    //self.fetchUser(with: self.email)
-                                }) {
-                                    Text("Next")
-                                        .fontWeight(.bold)
-                                        .font(.title)
-                                        .padding(EdgeInsets(top: 20, leading: 40, bottom: 20, trailing: 40))
-                                        .background(Color.customCorporateBlue)
-                                        .cornerRadius(8)
-                                        .foregroundColor(.white)
-                                }
-                                
-                                //NavigationLink(destination: WelcomeView(), isActive: $showWelcomeView) { EmptyView() }
+                            Spacer()
+                            
+                            Button(action: {
+                                //self.showActivityIndicator.toggle()
+                                //self.fetchUser(with: self.email)
+                            }) {
+                                Text("Next")
+                                    .fontWeight(.bold)
+                                    .font(.title)
+                                    .padding(EdgeInsets(top: 20, leading: 40, bottom: 20, trailing: 40))
+                                    .background(Color.customCorporateBlue)
+                                    .cornerRadius(8)
+                                    .foregroundColor(.white)
                             }
                             
-                        }.padding(.horizontal, 30)
-                            .modifier(AdaptsToKeyboard())
-                            .padding(.top, -20)
+                            //NavigationLink(destination: WelcomeView(), isActive: $showWelcomeView) { EmptyView() }
+                        }
                         
-                        Spacer()
-                    }
+                    }.padding(.horizontal, 30)
+                        .modifier(AdaptsToKeyboard())
+                        .padding(.top, -20)
                     
-                }.edgesIgnoringSafeArea(.top)
-            }
+                    Spacer()
+                }
+                
+            }.edgesIgnoringSafeArea(.top)
         }
     }
 }
